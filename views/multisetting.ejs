@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Comprehension Select</title>
+        <link rel="stylesheet" href="/comprehension.css" >
+    </head>
+    <body>
+        <h2>マルチモード希望理解度・希望ロール選択</h2>
+        <% if(!isNaN(totalComprehension)){ %>
+            <p>あなたの理解度：<span id="userComprehension"><%= totalComprehension %></span></p> 
+        <% } %>
+        
+        <form id = "comprehensionform" action="/multisetting" method="POST">
+        <% if (comprehensionMessage.length > 0) { %>
+                    <p style="color: red;"><%= comprehensionMessage %></p>
+                <% } %>
+            <div>
+            <p>あなたの理解度とくらべて、どんな理解度の人と学習したいですか？</p>
+                <div>
+                    <input type="radio" name="comprehension" value="low" id="low" >
+                    <label class="radio-button" for="low">ひくい</label>
+                    
+                    <input type="radio" name="comprehension" value="middle" id="middle">
+                    <label class="radio-button" for="middle">おなじくらい</label>
+
+                    <input type="radio" name="comprehension" value="high" id="high">
+                    <label class="radio-button" for="high">たかい</label>
+                </div>
+                <p>希望のロールをえらんでください</p>
+                <div>
+                    <input type="radio" name="role" value="1" id="role1" >
+                    <label class="radio-button" for="role1">ロール1(<%= role1 %>)</label>
+                    
+                    <input type="radio" name="role" value="2" id="role2">
+                    <label class="radio-button" for="role2">ロール2(<%= role2 %>)</label>
+
+                    <input type="radio" name="role" value="3" id="role3">
+                    <label class="radio-button" for="role3">どちらでもいい</label>
+                </div>
+                <input type="hidden" name="sceneNumber" value="<%= scene %>">
+                <button type="submit">決定</button>
+
+            </div>
+        </form>
+
+    </body>
+</html>

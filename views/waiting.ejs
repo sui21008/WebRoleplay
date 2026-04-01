@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Waiting</title>
+        <link rel="stylesheet" href="/waiting.css" >
+    </head>
+    <body>
+        <div class="loading-wrapper">
+            <div class="loading-container">
+                <span class="loading-text">マッチング中</span>
+                <div class="loader"></div>
+            </div>
+        </div>
+        <div id="finishButton">
+            <button id='cancelButton'>マッチングをやめる</button>
+        </div>
+        <div>
+            <p>※ブラウザのもどるボタンは、つかわないでください</p>
+        </div>
+
+
+        <dialog id="status1">
+            <div class="inner">
+                <div class="header">かくにん</div>
+                <div class="body">
+                    <p>希望の理解度のルームがみつかりませんでした。このままマッチングしますか？</p>
+                    <p>あなたの理解度：<span id="yourComp_join"></span></p>
+                    <p>相手の理解度: <span id="roomComp"></span></p>
+                </div>
+                <div class="footer">
+                    <button class="button ok">する</button><button class="button ng">ちがうルームをさがす</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="status2">
+            <div class="inner">
+                <div class="header">かくにん</div>
+                <div class="body">
+                    <p>希望の理解度の学習者がみつかりませんでした。このままマッチングしますか？</p>
+                    <p>あなたの理解度：<span id="yourComp_room"></span></p>
+                    <p>相手の理解度: <span id="joinComp"></span></p>
+                </div>
+                <div class="footer">
+                    <button class="button ok">する</button><button class="button ng">ちがう相手をさがす</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="confirmRole">
+            <div class="inner">
+                <div class="header">かくにん</div>
+                <div class="body">
+                    <p>ロールが希望通りになりませんでした。このままマッチングしますか？</p>
+                </div>
+                <div class="footer">
+                    <button class="button role_ok">する</button><button class="button role_ng">しない</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="cancelMatching">
+            <div class="inner">
+                <div class="header">かくにん</div>
+                <div class="body">
+                    <p>マッチングが成立しませんでした。どうしますか？</p>
+                </div>
+                <div class="footer">
+                    <button class="button new_room">あたらしくルームをつくる</button>
+                    <button class="button join_again">ちがうルームをさがす</button>
+                    <button class="button cancel">ちがうシチュエーションをえらぶ</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="creatorCancelMatching">
+            <div class="inner">
+                <div class="header">かくにん</div>
+                <div class="body">
+                    <p>マッチングが成立しませんでした。ちがうルームをさがします。</p>
+                </div>
+                <div class="footer">
+                    <button class="button cancel_ok">OK</button>
+                    
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="noRoom">
+            <div class="inner">
+                <div class="header">かくにん</div>
+                <div class="body">
+                    <p>マッチングをまっているルームがありませんでした</p>
+                </div>
+                <div class="footer">
+                    <button class="button noroom_ok">OK</button>
+                </div>
+            </div>
+        </dialog>
+
+        <script src="/socket.io/socket.io.js"></script> 
+            <script>
+
+                
+                const socket = io();
+
+                const status1_dialog = document.querySelector('#status1');
+                const status2_dialog = document.querySelector('#status2');
+                const confirmRole_dialog = document.querySelector('#confirmRole');
+                const noRoom_dialog = document.querySelector('#noRoom');
+                const cancelMatching_dialog = document.querySelector('#cancelMatching');
+                const creatorCancelMatching_dialog = document.querySelector('#creatorCancelMatching');
+                const role_okButton = document.querySelector('#confirmRole .button.role_ok');
+                const role_ngButton = document.querySelector('#confirmRole .button.role_ng');
+                const scene = '<%= situation %>'
+
+                let isExpectedTransition = false;
+
+                window.addEventListener("beforeunload", function (event) {
+                    console.log("戻るボタンなどでwaitingページを離れました");
+
+                    if (typeof socket !== "undefined" && !isExpectedTransition) {
+                        socket.emit("cancelMatchingByUser");
+                    }
+                });
+
+                
+
+                socket.emit('matching');
+
+                socket.on('status1',(roomID, roomComp,yourComp) => {
+                    console.log("status1");
+                    document.getElementById('roomComp').innerHTML = roomComp;
+                    document.getElementById('yourComp_join').innerHTML = yourComp;
+                    status1_dialog.show();
+                })
+
+                socket.on('status2',(joinComp,yourComp) => {
+                    console.log("status2");
+                    document.getElementById('joinComp').innerHTML = joinComp;
+                    document.getElementById('yourComp_room').innerHTML = yourComp;
+                    status2_dialog.show();
+                })
+
+                socket.on('confirmRole', () => {
+                    console.log("confirm role");
+                    confirmRole_dialog.show();
+                })
+
+                socket.on('noRoom', () => {
+                    console.log("no room");
+                    noRoom_dialog.show();
+                })
+
+                socket.on('cancelMatching', () => {
+                    console.log("cancel matching");
+                    isExpectedTransition = true;
+                    cancelMatching_dialog.show();
+                })
+
+                socket.on('creatorCancelMatching', () => {
+                    console.log("creator cancel matching");
+                    creatorCancelMatching_dialog.show();
+                })
+                
+                document.querySelectorAll('.button.ok').forEach(button => {
+                    button.addEventListener('click', () => {
+                        socket.emit('OK');
+                        status1_dialog.close();
+                        status2_dialog.close();
+                    });
+                });
+                document.querySelectorAll('.button.ng').forEach(button => {
+                    button.addEventListener('click', () => {
+                        socket.emit('NG');
+                        status1_dialog.close();
+                        status2_dialog.close();
+                    });
+                });
+
+                role_okButton.addEventListener('click', function () {
+                    socket.emit('role_OK');
+                    confirmRole_dialog.close();
+                });
+                role_ngButton.addEventListener('click', function () {
+                    socket.emit('NG');
+                    confirmRole_dialog.close();
+                });
+
+                document.querySelector('.button.noroom_ok').addEventListener('click', function () {
+                    isExpectedTransition = true;
+                    window.location.href = '/situation';
+                });
+
+                document.querySelector('.new_room').addEventListener('click', function () {
+                    socket.emit('createNewRoom');
+                    cancelMatching_dialog.close();
+                });
+                document.querySelector('.join_again').addEventListener('click', function () {
+                    socket.emit('joinAgain');
+                    cancelMatching_dialog.close();
+                });
+                document.querySelector('.cancel_ok').addEventListener('click', function () {
+                    socket.emit('joinAgain');
+                    creatorCancelMatching_dialog.close();
+                    console.log("creatorCancelMatchingでok押されたよ");
+                    
+                });
+                document.querySelector('.cancel').addEventListener('click', function () {
+                    isExpectedTransition = true;
+                    window.location.href = '/situation';
+                });
+
+                document.getElementById('cancelButton').addEventListener('click', () => {
+                    socket.emit('cancelMatchingByUser');
+                    isExpectedTransition = true;
+                    window.location.href = '/mode';
+                });
+
+                socket.on('matching complete', (roomID) => {
+                    console.log("matching完了 roomID: "+roomID);
+                    isExpectedTransition = true;
+                    socket.emit('setRoomSession',roomID);
+                    window.location.href = `/chat/${scene}`;
+                })
+
+                
+            </script>
+    </body>
+
+</html>

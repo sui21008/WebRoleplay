@@ -1,0 +1,94 @@
+if(!replyMsg){
+        if(sceneNumber === '1' ){
+            console.log("シーン1です");
+            if(msg.includes('意味を教えて') || (msg.includes('意味') && msg.includes('わかりません')) ){
+                if(msg.includes('八百屋')){
+                    replyMsg = '八百屋(やおや)は野菜や果物を売る店です。';
+                }else if(msg.includes('店員')){
+                    replyMsg = '店員(てんいん)は店で働いている人です。英語だとclerkといいます。';
+                }else if(msg.includes('値段')){
+                    replyMsg = '値段(値段)は、物を買うときに支払わなければならない金額です。英語だとpriceといいます。';
+                }else{
+                    replyMsg = 'すみません、わかりません。';
+                }
+            }else if(msg.includes('読み')){
+                if(msg.includes('八百屋')){
+                    replyMsg = '八百屋の読み方は やおや です。';
+                }else if(msg.includes('店員')){
+                    replyMsg = '店員の読み方は てんいん です。';
+                }else if(msg.includes('客')){
+                    replyMsg = '客の読み方は きゃく です。';
+                }else if(msg.includes('買')){
+                    replyMsg = '買うの読み方は かう です。';
+                }else if(msg.includes('聞')){
+                    replyMsg = '聞くの読み方は きく です。';
+                }else if(msg.includes('値段')){
+                    replyMsg = '値段の読み方は ねだん です。';
+                }else if(msg.includes('以下')){
+                    replyMsg = '以下の読み方は いか です。';
+                }else if(msg.includes('通')){
+                    replyMsg = '通りの読み方は とおり です。';
+                }else{
+                    replyMsg = 'すみません、わかりません。';
+                }
+            }else if(msg.includes('すみません')){
+                replyMsg = 'いらっしゃいませ、なにをお求めですか？';
+            }else if(msg.includes('いくら') || msg.includes('何円')){
+                replyMsg = 'じゃがいもが60円、リンゴが120円です。';
+            }else if(msg.includes('ください')){
+                replyMsg = 'かしこまりました。合計180円です。';
+            }else if(msg.includes('どうぞ')){
+                replyMsg = 'ありがとうございました。またおこしください。';
+            }else{
+                replyMsg = '言いかたを変えてみましょう。';
+            }
+        }else if(sceneNumber === '2'){
+            if(msg.includes('意味を教えて') || msg.includes('意味') && msg.includes('わかりません') ){
+                if(msg.includes('予約')){
+                    replyMsg = '予約(よやく)は前もってやくそくすることです。英語だとreservationといいます。';
+                }else if(msg.includes('店員')){
+                    replyMsg = '店員(てんいん)は店ではたらいている人です。英語だとclerkといいます。';
+                }else if(msg.includes('必要')){
+                    replyMsg = '必要(ひつよう)は、なくてはならないことです。英語だとneedといいます。';
+                }else{
+                    replyMsg = 'すみません、わかりません。';
+                }
+            }else if(msg.includes('読み')){
+                if(msg.includes('予約')){
+                    replyMsg = '予約の読み方は よやく です。';
+                }else if(msg.includes('店員')){
+                    replyMsg = '店員の読み方は てんいん です。';
+                }else if(msg.includes('電話')){
+                    replyMsg = '電話の読み方は でんわ です。';
+                }else if(msg.includes('対応')){
+                    replyMsg = '対応の読み方は たいおう です。';
+                }else if(msg.includes('必要')){
+                    replyMsg = '必要の読み方は ひつよう です。';
+                }else if(msg.includes('情報')){
+                    replyMsg = '情報の読み方は じょうほう です。';
+                }else if(msg.includes('以下')){
+                    replyMsg = '以下の読み方は いか です。';
+                }else if(msg.includes('通')){
+                    replyMsg = '通りの読み方は とおり です。';
+                }else{
+                    replyMsg = 'すみません、わかりません。';
+                }
+            }else if(msg.includes('もしもし')){
+                replyMsg = 'もしもし、明日で予約したいのですが。';
+            }else if(msg.includes('名前')){
+                replyMsg = '名前はさとうです。';
+            }else if(msg.includes('何時') || msg.includes('時間')){
+                replyMsg = '夜の7時でお願いします。';
+            }else if(msg.includes('人') || msg.includes('何名')){
+                replyMsg = 'ふたりです。';
+            }else if(msg.includes('席')){
+                replyMsg = 'テーブル席でお願いします。';
+            }else if(msg.includes('かしこまりました')){
+                replyMsg = 'ありがとうございます。よろしくお願いします。';
+            }else{
+                replyMsg = '言いかたを変えてみましょう。';
+            }
+        }else{
+            replyMsg = 'すみません、わかりません。';
+        }
+    }

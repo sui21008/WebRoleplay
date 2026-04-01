@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Feedback</title>
+        <link rel="stylesheet" href="/feedback.css" >
+    </head>
+    <body>
+        <h2>フィードバック</h2>
+        <div class = feedback>
+            <div class = box>
+                <div class = title>
+                    <b>ログ</b>
+                </div>
+                <ul class="log">
+                    <% hilightedLog.forEach((msgObj) => { %>
+                        <li class="list"><%- msgObj %></li>
+                    <% }) %>
+                <% if(hilightedLog.length === 0){ %>
+                    <p>ログは ありません</p>
+                <% } %>
+                </ul>
+            </div>
+
+            <div class = box>
+                <div class = title>
+                    <b>おてほん</b>
+                </div>
+                <ul class="log">
+                    <% hilightedModel.forEach((msgObj) => { %>
+                        <li class="list"><%- msgObj %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        
+            <div>
+                <h3>あなたが まちがえた たんご</h3>
+                <ul id="mistakewords">
+                <% wordMistakeCount.forEach((wordObj) => { %>
+                        <li><%= wordObj.word %> : <%= wordObj.mistakeCount %>回</li>
+                    <% }) %>
+                <% if(wordMistakeCount.length === 0){ %>
+                    <p>まちがいは ありませんでした</p>
+                <% } %>
+                </ul>
+
+                <h3>CLAが まちがえた たんご</h3>
+                <ul id="CLAmistakes">
+                <% CLAMistakes.forEach((wordObj) => { %>
+                        <li><%= wordObj %></li>
+                    <% }) %>
+                <% if(CLAMistakes.length === 0){ %>
+                    <p>CLAの まちがいは ありませんでした</p>
+                <% } %>
+                </ul>
+
+                <h3>してきの けっか</h3>
+                <ul id="pointoutResult">
+                <% pointoutResult.forEach((result) => { %>
+                        <li><%= result %></li>
+                    <% }) %>
+                <% if(pointoutResult.length === 0){ %>
+                    <p>してきは ありませんでした</p>
+                <% } %>
+                </ul>
+
+                <h3>ただしく こたえられた わりあい</h3>
+                <p><%= accuracy %>%</p>
+
+                <h3>CLAの まちがいを してきできた わりあい</h3>
+                <% if(CLAMistakes.length === 0){ %>
+                    <p>CLAの まちがいは ありませんでした</p>
+                <% }else{ %>
+                    <p><%= pointoutAccuracy %>%</p>
+                <% } %>
+                
+                <div id="finishButton">
+                    <a href="/mode">モードせんたくに もどる</a>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>

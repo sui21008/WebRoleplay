@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Mode Select</title>
+        <link rel="stylesheet" href="mode.css" >
+    </head>
+    <body>
+        <h2>モード選択</h2>
+        <form id = "modeform" action="/mode" method="POST">
+            <div>
+                <div>
+                    <input type="radio" name="mode" value="single" id="radio1" >
+                    <label class="radio-button" for="radio1">シングルモード</label>
+                    
+                    <input type="radio" name="mode" value="friend" id="radio2">
+                    <label class="radio-button" for="radio2">フレンドモード</label>
+
+                    <input type="radio" name="mode" value="multi" id="radio3">
+                    <label class="radio-button" for="radio3">マルチモード</label>
+                </div>
+                <button type="submit">決定</button>
+
+            </div>
+        </form>
+
+    </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Multi</title>
+        <link rel="stylesheet" href="comprehension.css" >
+    </head>
+    <body>
+        <h3>マルチモード</h3>
+        <% if (multiMessage.length > 0) { %>
+                    <p style="color: red;"><%= multiMessage %></p>
+                <% } %>
+        <p>マッチングをまっているルームの数：<%= roomLength %></p>
+        <form id = "multi" action="/multi" method="post">
+            <div>
+                <input type="radio" name="multiRoom" value="createMultiRoom" id="radio1" >
+                <label class="radio-button" for="radio1">部屋を作る</label>
+                    
+                <input type="radio" name="multiRoom" value="joinMultiRoom" id="radio2">
+                <label class="radio-button" for="radio2">部屋に参加する</label>
+                    
+            </div>
+            <button>入室</button>
+            <input type="hidden" name="sceneNumber" value="<%= scene %>">
+
+        </form>
+        
+        <script>
+        const roomID = document.getElementById('roomID');
+                
+                multi.addEventListener('submit', (e) => { //formがsubmitされたとき
+                    e.preventDefault();
+                    let checkValue = multi.elements['multiRoom'].value;//createRoom or joinRoom
+                    localStorage.setItem('roomSelect', checkValue);
+                    
+                        if(checkValue){ //ラジオボックスが選択されていたら
+                            if(checkValue === 'createRoom'){
+                                //socket.emit('create room', checkValue); //create roomイベントを送信
+                                
+                                window.location.href = 'chat.html';
+                            }else if(checkValue === 'joinRoom'){
+                                if(roomID.value){ //roomIDが入力されていたら
+                                    //socket.emit('join room', roomID.value);
+                                    //socket.emit('join room message', username.value);
+                                    window.location.href = 'chat.html';
+
+                                }else{
+                                    alert('ルームIDを入力してください');
+                                }
+                            }
+                        }else{
+                            alert('選択してください');
+                        }
+                    })
+
+        
+    </body>
+</html>

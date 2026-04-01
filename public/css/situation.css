@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+body { 
+    margin: 0;
+    padding-bottom: 3rem; 
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+.situationButton a {
+    text-decoration: none;
+    background: #eee;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px auto;
+    max-width: 280px;
+    padding: 10px 25px;
+    color: #4c4c4c;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.situationButton a:hover {
+    background: #4c4c4c;
+    color: #FFF;
+}
+.situationButton a:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #4c4c4c;
+    border-right: 3px solid #4c4c4c;
+    transform: rotate(45deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+.situationButton a:hover:after {
+    border-color: #FFF;
+}

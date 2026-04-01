@@ -1,0 +1,96 @@
+{
+    "words" : [
+        {
+            "word": "いらっしゃいませ",
+            "mistake": "いらっしゃいます"
+        },
+        {
+            "word": "りんご",
+            "mistake": "りんが"
+        },
+        {
+            "word": "じゃがいも",
+            "mistake": "potato"
+        },
+        {
+            "word": "いくら",
+            "mistake": "いくつ"
+        },
+        {
+            "word": "円",
+            "mistake": "ドル"
+        },
+        {
+            "word": "2つ",
+            "mistake": "につ"
+        },
+        {
+            "word": "1つ",
+            "mistake": "いちつ"
+        },
+        {
+            "word": "ください",
+            "mistake": "くらさい"
+        },
+        {
+            "word": "会計",
+            "mistake": "金"
+        },
+        {
+            "word": "お願いします",
+            "mistake": "お願いしました"
+        },
+        {
+            "word": "ありがとうございます",
+            "mistake": "ありがとござます"
+        },
+        {
+            "word": "はい",
+            "mistake": "へい"
+        },
+        {
+            "word": "予約",
+            "mistake": "reservation"
+        },
+        {
+            "word": "かしこまりました",
+            "mistake": "かしかまりました"
+        },
+        {
+            "word": "いつ",
+            "mistake": "いくつ"
+        },
+        {
+            "word": "明日",
+            "mistake": "tomorrow"
+        },
+        {
+            "word": "何名",
+            "mistake": "何円"
+        },
+        {
+            "word": "2人",
+            "mistake": "ににん"
+        },
+        {
+            "word": "テーブル",
+            "mistake": "テーバル"
+        },
+        {
+            "word": "座敷",
+            "mistake": "座布団"
+        },
+        {
+            "word": "どちら",
+            "mistake": "あちら"
+        },
+        {
+            "word": "名前",
+            "mistake": "name"
+        },
+        {
+            "word": "お伺い",
+            "mistake": "聞く"
+        }
+    ]
+}
