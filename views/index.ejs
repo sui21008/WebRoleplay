@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>LogIn</title>
+        <link rel="stylesheet" href="style.css" >
+    </head>
+    <body bgcolor=#F4F0EF>
+        
+
+        <div class="container1">
+            <h3>ログイン</h3>
+            <form id = "loginform" action="/login" method="POST">
+                <% if (message.length > 0) { %>
+                    <p style="color: red;"><%= message %></p>
+                <% } %>
+                <div>
+                    <input type="text" id="username" name="username" placeholder="ユーザー名">
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" placeholder="パスワード">
+                </div>
+                                
+                <button type="submit">ログイン</button>
+            </form>
+            <div class="divider">
+                <span style="color: gray;">または</span>
+            </div>
+            <div>
+                <button id="registerbutton" onclick="toRegister()">とうろく</button>
+            </div>
+
+        </div>
+
+        <script>
+        function toRegister() {
+            window.location.href = '/register';
+        }
+        
+        </script>
+
+            
+            
+        
+    </body>
+</html>

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+body { 
+    margin: 0;
+    padding-bottom: 3rem; 
+    font-family: 'Noto Sans JP', sans-serif;
+}
+h2 {
+    text-align: center;
+}
+.feedback {
+    display: flex;
+}
+.box {
+    position: relative;
+    border: 2px solid #C1AA9F;
+    padding: 20px 15px 15px 15px;
+    margin: 20px;
+    width: 35em;
+}
+
+.title {
+    font-size: 25px;
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    background: #ffffff;
+    color: #C1AA9F;
+    padding: 0 8px;
+}
+
+.log {
+    list-style-type: none; 
+    padding: 1px;
+}
+
+ul li {
+    padding: 0.5rem 1rem; 
+}
+
+.log > li:nth-child(odd) {
+    background: #F4F0EF;
+}
+
+#finishButton a {
+    text-decoration: none;
+    background: #4c4c4c;
+    border-radius: 5px;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px auto;
+    max-width: 280px;
+    padding: 5px 25px;
+    color: #FFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#finishButton a:hover {
+    background: #eee;
+    color: #4c4c4c;
+}
+
+#multiFinishButton a {
+    text-decoration: none;
+    background: #4c4c4c;
+    border-radius: 5px;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    max-width: 300px;
+    padding: 5px 25px;
+    color: #FFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    font-size: 25px;
+    position: fixed;
+    bottom:60px;
+    right: 100px;
+}
+
+#multiFinishButton a:hover {
+    background: #eee;
+    color: #4c4c4c;
+}
+
+
+.mistake_word{
+    color :red;
+    font-weight: bold;
+}
+
+.CLAmistake_word{
+    color :darkorange;
+    font-weight: bold;
+}

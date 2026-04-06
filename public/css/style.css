@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+body { 
+    margin: 0;
+    padding-bottom: 3rem; 
+    font-family:  'Noto Sans JP', sans-serif;
+    text-align: center;
+    position: relative;
+    height: 100vh; 
+    display: flex; /* Flexbox */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+.container1 {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    margin-top: -5px; /* 中央から少し上に配置 */
+}
+
+.container2 {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    margin-top: -180px; /* 中央から少し上に配置 */
+}
+
+#username, #password, #new_username, #new_password {
+    width: 93%; 
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 5px 0; 
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: center;
+    display: block; /* ブロック要素に変更して中央揃え */
+}
+
+#loginform > button, #registerform > button, #registerbutton {
+    background: #333; 
+    border: none; 
+    width: 100%; 
+    padding: 8px 10px; 
+    margin: 10px 0; 
+    font-size: 1em;
+    border-radius: 10px; 
+    outline: none; 
+    color: #fff; 
+    display: block; 
+}
+
+
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .25em;
+}
+
+    
+/*ラジオボタン 丸いのを消してボタン風に*/
+input[type="radio"]{
+    display:none;
+}
+.radio-button{
+    display: inline-block;
+    padding: 10px 20px;
+    margin:10px;
+    width: 115px;
+    text-align: center;
+    background-color: #efefef;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type="radio"]:checked + label.radio-button{
+    background-color: #4c4c4c;
+    color: #fff;
+    border: none;
+}
+
+
+#roomID{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid#ccc;
+    padding: 5px 10px;
+}
+#roomID:focus{
+    border-bottom-color: #4c4c4c;
+}
+
+
+
+
+
+
+#nametag {
+    background: #BED8DF; 
+    text-align:center;
+}
+
+#roomIdTag {
+    background: #f1eedc; 
+    text-align:center;
+}
+#form { 
+    background:rgba(0, 0, 0, 0.15);
+    padding: 0.25rem; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    display: flex; 
+    height: 3rem; 
+    box-sizing: border-box; 
+    backdrop-filter: blur(10px); 
+}
+#input {
+    border: none; 
+    padding: 0 1rem; 
+    flex-grow: 1; 
+    border-radius: 2rem; 
+    margin: 0.25rem; 
+}
+#input:focus {
+    outline: none; 
+}
+#form > button {
+    background: #333; 
+    border: none; 
+    padding: 0 1rem; 
+    margin: 0.25rem; 
+    border-radius: 3px; 
+    outline: none; 
+    color: #fff; 
+}
+#messages {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+}
+#messages > li {
+    text-align: left;
+    padding: 0.5rem 1rem; 
+}
+#messages > li:nth-child(odd) {
+    background: #efefef;
+}
+

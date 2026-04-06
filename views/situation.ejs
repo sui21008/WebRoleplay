@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Situation Select</title>
+        <link rel="stylesheet" href="situation.css" >
+    </head>
+    <body>
+        <h2>シチュエーションを えらぶ</h2>
+        <ul>
+            <% array_situation.forEach(situation => { %>
+            <div class="situationButton">
+            <% if(mode === "single" || mode === "friend"){ %>
+                <li><a href="/comprehension/<%= situation.scenenum %>"><%= situation.name %></a></li>
+            <% }else if(mode === "multi"){ %> 
+                <li><a href="/multisetting/<%= situation.scenenum %>"><%= situation.name %></a></li>
+            <% } %>
+            </div>
+            <% }) %> 
+    </body>
+</html>

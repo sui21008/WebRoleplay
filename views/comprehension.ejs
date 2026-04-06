@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Comprehension Select</title>
+        <link rel="stylesheet" href="/comprehension.css" >
+    </head>
+    <body>
+        <h2>いっしょに がくしゅうしたい あいての りかいど</h2>
+        <% if(!isNaN(totalComprehension)){ %>
+            <p>あなたの りかいど：<span id="userComprehension"><%= totalComprehension %></span></p> 
+        <% } %>
+        
+        <form id = "comprehensionform" action="/comprehension" method="POST">
+        <% if (comprehensionMessage.length > 0) { %>
+                    <p style="color: red;"><%= comprehensionMessage %></p>
+                <% } %>
+            <div>
+                <input type="text" id="comprehension" name="comprehension" placeholder="0~100">
+                <div>
+                    <input type="radio" name="role" value="1" id="radio1" >
+                    <label class="radio-button" for="radio1">ロール1</label>
+                    
+                    <input type="radio" name="role" value="2" id="radio2">
+                    <label class="radio-button" for="radio2">ロール2</label>
+                </div>
+                <input type="hidden" name="sceneNumber" value="<%= scene %>">
+                <button type="submit">けってい</button>
+
+            </div>
+        </form>
+
+    </body>
+</html>

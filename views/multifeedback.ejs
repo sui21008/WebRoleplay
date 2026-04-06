@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--widht=device-width:端末の幅　initial-scale:初期倍率-->
+        <title>Feedback</title>
+        <link rel="stylesheet" href="/feedback.css" >
+    </head>
+    <body>
+        <h2>フィードバック</h2>
+        <p>ログとおてほんをくらべながら、あなたのロールプレイをふりかえってみましょう。</p>
+        <div class = feedback>
+            <div class = box>
+                <div class = title>
+                    <b>ログ</b>
+                </div>
+                <ul class="log">
+                    <% logMessage.forEach((msgObj) => { %>
+                        <li class="list"><%- msgObj %></li>
+                    <% }) %>
+                <% if(logMessage.length === 0){ %>
+                    <p>ログは ありません</p>
+                <% } %>
+                </ul>
+            </div>
+
+            <div class = box>
+                <div class = title>
+                    <b>おてほん</b>
+                </div>
+                <ul class="log">
+                    <% modelAnswer.forEach((msgObj) => { %>
+                        <li class="list"><%- msgObj %></li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div>
+                <div id="multiFinishButton">
+                    <a href="/mode">モードせんたくに もどる</a>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>
